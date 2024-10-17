@@ -40,15 +40,15 @@ async function read_file() {
       console.log(Result_Text);
      })
      .then((text) => {
-        console.log('.then 2');
-        New_File_Contents = text ;
+        New_File_Contents = text ;        
         
-        Result_Text = Result_Text + " Before TimeOut ";
+        console.log('.then 2');        
+        console.log(" text = " + text );
 
         const result = document.getElementById("lblResultRead2");
         result.innerText = Result_Text ;
 
-        setTimeout( UpdateNewText_FromFile , 800 );
+        setTimeout( UpdateNewText_FromFile , 1200 );
      })
     .catch((e) => console.error(e));
 }
@@ -57,7 +57,9 @@ async function read_file() {
 function UpdateNewText_FromFile() {
     const result = document.getElementById("lblResultRead2B");
     result.innerText = New_File_Contents ;
+    console.log(" New_File_Contents = " + New_File_Contents );
 }
+//
 ///////////////////////////////////////////////////////
 //
 ///////////////////////////////////////////////////////
