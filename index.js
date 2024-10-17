@@ -22,6 +22,11 @@ async function saveFile() {
 // 
 //
 async function getFile() {
+    
+    // let path =_hostingEnvirounment.WebRootPath ;   // FAIL 
+    let path = window.location.pathname ;    
+    console.log("CURRENT SYSTEM PATH = " + path );
+    
     // Open file picker and destructure the result the first handle
     const [fileHandle] = await window.showOpenFilePicker();
     const file = await fileHandle.getFile();
@@ -42,9 +47,11 @@ window.addEventListener("DOMContentLoaded", (event) => {
 });
 //
 //
+
 function  Initialize_DOM_EVENTs() {
     //
-    //-- Open File EVENT --//
+    //-- EVENT to READ File contents USING File Selector  WORKS OK on github --//
+    // IN THAT WAY I am using a function to do the JOB.
     let  btnFileRead = document.getElementById('btnOpenRead');
     if (btnFileRead) {
         console.log('SETUP READ Button Event OK.');
@@ -52,22 +59,26 @@ function  Initialize_DOM_EVENTs() {
             console.log('trying to Open a file');          
             
             getFile().then((fileText) => {
-                console.log('ANTE GIA !!! FILE TEXT IS --> ' + fileText);                              
-            });
-            
+                console.log('ANTE GIA !!! FILE TEXT IS --> ' + fileText);   
+                const result = document.getElementById("lblReadResult");
+                result.innerText = fileText ;
+            });            
             console.log('Open file PHASE_2');
         });
     } else {
         console.log('DOM not loaded yet. As result the READ Button Event did not WORK.');
     }
     //
-    //-- Open File Selector EVENT    OK - WORKs --//
+    //-- EVENT to READ File contents USING File Selector  WORKs BUT see below SOS --//
     const fileSelector = document.getElementById('file-selector');
     fileSelector.addEventListener('change', (event) => {
         const fileList = event.target.files;        
         if ( fileList.length > 0 ) {
             console.log('At least 1 File Selected. ->' + fileList[0].name );
             console.log(fileList);
+            // SOS
+            // SOS Running on github returns a PROMISE Object and not the file-text-contents.
+            // SOS 
             console.log('FILE Contents --> ' + fileList[0].text());
         } else {
             console.log('No one File Selected......');
