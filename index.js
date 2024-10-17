@@ -2,6 +2,28 @@
 console.log("HELLO TASOS !!!");
 //
 //
+///////////////////////////////////////////
+// READ LOCAL FILE 
+///////////////////////////////////////////
+async function read_file(params) {
+    console.log('Try to FETCH The data from FILE...');
+    let file = "users.txt" ;
+    fetch(file)
+    .then((res) => res.text())
+    .then((text) => {
+      console.log('OPEN file successfully !!!');
+      // do something with "text"
+      // SHOW CONTENTS ON THE Console.    
+      console.log(text);
+     })
+    .catch((e) => console.error(e));
+}
+//
+//
+///////////////////////////////////////////////////////
+//
+///////////////////////////////////////////////////////
+//
 async function saveFile() {
     try {
         // create a new handle
@@ -21,6 +43,8 @@ async function saveFile() {
 }
 // 
 //
+////////////////////////////////////////////////
+//
 async function getFile() {
     
     // let path =_hostingEnvirounment.WebRootPath ;   // FAIL 
@@ -39,6 +63,8 @@ async function getFile() {
     return contents;
 }
 //
+//
+/////////////////////////////////////////////////////////
 //
 window.addEventListener("DOMContentLoaded", (event) => {
     //    
@@ -68,6 +94,26 @@ function  Initialize_DOM_EVENTs() {
     } else {
         console.log('DOM not loaded yet. As result the READ Button Event did not WORK.');
     }
+    //
+    //
+    // 2nd WAY to READ FILE From local or root path
+    let  btnFileRead2 = document.getElementById('btnRead2');
+    if (btnFileRead2) {
+        console.log('SETUP READ-2 Button Event OK.');
+        btnFileRead2.addEventListener('click', function() {
+            console.log('trying to Open a file');          
+            
+            read_file().then((fileText) => {
+                console.log('ANTE GIA !!! FILE TEXT IS --> ' + fileText);   
+                const result = document.getElementById("lblResultRead2");
+                result.innerText = fileText ;
+            });            
+            console.log('Open file PHASE_2');
+        });
+    } else {
+        console.log('DOM not loaded yet. As result the READ Button Event did not WORK.');
+    }
+
     //
     //-- EVENT to READ File contents USING File Selector  WORKs BUT see below SOS --//
     const fileSelector = document.getElementById('file-selector');
