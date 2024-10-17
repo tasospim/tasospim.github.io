@@ -5,6 +5,7 @@ console.log("HELLO TASOS !!!");
 ///////////////////////////////////////////
 // READ LOCAL FILE 
 ///////////////////////////////////////////
+/*
 async function read_file() {
     console.log('Try to FETCH The data from FILE...');
     let file = "users.txt" ;
@@ -22,7 +23,27 @@ async function read_file() {
     .catch((e) => console.error(e));
     return Result_Text;
 }
-//
+*/
+async function read_file() {
+    console.log('Try to FETCH The data from FILE...');
+    let file = "users.txt" ;
+    let Result_Text = "no-Data-" ;
+    fetch(file)
+    .then((res) => res.text())
+    .then((text) => text )
+    .then((text) => {
+      console.log('.then 1');
+      Result_Text = text;    
+     })
+     .then((text) => {
+        console.log('.then 2');
+        
+        const result = document.getElementById("lblResultRead2");
+        result.innerText = text ;
+
+     })
+    .catch((e) => console.error(e));
+}
 //
 ///////////////////////////////////////////////////////
 //
@@ -51,7 +72,7 @@ async function saveFile() {
 //
 async function getFile() {
     
-    // let path =_hostingEnvirounment.WebRootPath ;   // FAIL 
+    // let path =_hostingEnvironment.WebRootPath ;   // FAIL 
     let path = window.location.pathname ;    
     console.log("CURRENT SYSTEM PATH = " + path );
     
@@ -104,6 +125,7 @@ function  Initialize_DOM_EVENTs() {
     // WORKS - OK     BUT take care OF THE BELOW 
     // SOS - SOS - SOS 
     // The code FLOW goes back and forth. OBSERVE the SEQUENCE OF the printed console.log info.
+    /*
     let  btnFileRead2 = document.getElementById('btnRead2');
     if (btnFileRead2) {
         console.log('SETUP READ-2 Button Event OK.');
@@ -117,6 +139,28 @@ function  Initialize_DOM_EVENTs() {
             });            
             console.log('Open file PHASE_2');
         });
+    } else {
+        console.log('DOM not loaded yet. As result the READ Button Event did not WORK.');
+    }
+    */
+    let  btnFileRead2 = document.getElementById('btnRead2');
+    if (btnFileRead2) {
+        console.log('SETUP READ-2 Button Event OK.');
+        btnFileRead2.addEventListener('click', read_file) ; 
+        /*
+        function() {
+            console.log('trying to Open a file');          
+            
+            const Text_Data = await read_file();
+
+            read_file().then((fileText) => {
+                console.log('ANTE GIA !!! FILE TEXT IS --> ' + fileText);   
+                const result = document.getElementById("lblResultRead2");
+                result.innerText = fileText ;
+            });            
+          */
+        console.log('Open file PHASE_2');
+        // });
     } else {
         console.log('DOM not loaded yet. As result the READ Button Event did not WORK.');
     }
