@@ -15,8 +15,8 @@ async function read_file(params) {
       // do something with "text"
       // SHOW CONTENTS ON THE Console.    
       console.log(text);
-        // return file;
-        return text;    
+      // return file;
+      return text;    
      })
     .catch((e) => console.error(e));
 }
