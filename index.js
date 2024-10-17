@@ -34,13 +34,13 @@ async function read_file() {
     .then((text) => {
       console.log('.then 1');
       Result_Text = text;    
+      console.log(Result_Text);
      })
      .then((text) => {
         console.log('.then 2');
-        
+        console.log(Result_Text);
         const result = document.getElementById("lblResultRead2");
         result.innerText = text ;
-
      })
     .catch((e) => console.error(e));
 }
