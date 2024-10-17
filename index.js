@@ -1,5 +1,7 @@
 'use strict'
 console.log("HELLO TASOS !!!");
+
+let  New_File_Contents = "empty" ;
 //
 //
 ///////////////////////////////////////////
@@ -28,6 +30,7 @@ async function read_file() {
     console.log('Try to FETCH The data from FILE...');
     let file = "users.txt" ;
     let Result_Text = "no-Data-" ;
+    New_File_Contents = "-" ;
     fetch(file)
     .then((res) => res.text())
     .then((text) => text )
@@ -38,13 +41,23 @@ async function read_file() {
      })
      .then((text) => {
         console.log('.then 2');
-        console.log(Result_Text);
+        New_File_Contents = text ;
+        
+        Result_Text = Result_Text + " Before TimeOut ";
+
         const result = document.getElementById("lblResultRead2");
-        result.innerText = text ;
+        result.innerText = Result_Text ;
+
+        setTimeout( UpdateNewText_FromFile , 800 );
      })
     .catch((e) => console.error(e));
 }
 //
+
+function UpdateNewText_FromFile() {
+    const result = document.getElementById("lblResultRead2B");
+    result.innerText = New_File_Contents ;
+}
 ///////////////////////////////////////////////////////
 //
 ///////////////////////////////////////////////////////
