@@ -5,9 +5,10 @@ console.log("HELLO TASOS !!!");
 ///////////////////////////////////////////
 // READ LOCAL FILE 
 ///////////////////////////////////////////
-async function read_file(params) {
+async function read_file() {
     console.log('Try to FETCH The data from FILE...');
     let file = "users.txt" ;
+    let Result_Text = "no-Data-" ;
     fetch(file)
     .then((res) => res.text())
     .then((text) => {
@@ -16,9 +17,10 @@ async function read_file(params) {
       // SHOW CONTENTS ON THE Console.    
       console.log(text);
       // return file;
-      return text;    
+      Result_Text = text;    
      })
     .catch((e) => console.error(e));
+    return Result_Text;
 }
 //
 //
