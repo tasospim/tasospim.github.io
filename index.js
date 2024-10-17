@@ -15,6 +15,8 @@ async function read_file(params) {
       // do something with "text"
       // SHOW CONTENTS ON THE Console.    
       console.log(text);
+        // return file;
+        return text;    
      })
     .catch((e) => console.error(e));
 }
@@ -97,6 +99,9 @@ function  Initialize_DOM_EVENTs() {
     //
     //
     // 2nd WAY to READ FILE From local or root path
+    // WORKS - OK     BUT take care OF THE BELOW 
+    // SOS - SOS - SOS 
+    // The code FLOW goes back and forth. OBSERVE the SEQUENCE OF the printed console.log info.
     let  btnFileRead2 = document.getElementById('btnRead2');
     if (btnFileRead2) {
         console.log('SETUP READ-2 Button Event OK.');
