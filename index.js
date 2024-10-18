@@ -41,6 +41,7 @@ async function read_file() {
         //
         const result = document.getElementById("lblResultRead2");
         result.innerText = New_File_Contents1 ;
+        return text;
      })
      .then((text) => {        
         New_File_Contents2 = text ;
