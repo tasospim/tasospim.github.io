@@ -1,12 +1,12 @@
 'use strict'
 console.log("HELLO TASOS !!!");
 
-let  New_File_Contents = "empty" ;
+let  New_File_Contents1 = "empty" ;
+let  New_File_Contents2 = "empty" ;
 //
 //
 ///////////////////////////////////////////
 // READ LOCAL FILE 
-///////////////////////////////////////////
 /*
 async function read_file() {
     console.log('Try to FETCH The data from FILE...');
@@ -29,35 +29,34 @@ async function read_file() {
 async function read_file() {
     console.log('Try to FETCH The data from FILE...');
     let file = "users.txt" ;
-    let Result_Text = "no-Data-" ;
-    New_File_Contents = "-" ;
+    New_File_Contents1 = "-1" ;
+    New_File_Contents2 = "-2" ;
     fetch(file)
     .then((res) => res.text())
     .then((text) => text )
     .then((text) => {
-      console.log('.then 1');
-      Result_Text = text;    
-      console.log(Result_Text);
-     })
-     .then((text) => {
-        New_File_Contents = text ;        
-        
-        console.log('.then 2');        
-        console.log(" text = " + text );
-
+        New_File_Contents1 = text ;        
+        console.log('.then 1');
+        console.log(" New_File_Contents1 = " + New_File_Contents1 );      
+        //
         const result = document.getElementById("lblResultRead2");
-        result.innerText = Result_Text ;
-
+        result.innerText = New_File_Contents1 ;
+     })
+     .then((text) => {        
+        New_File_Contents2 = text ;
+        console.log('.then 2');        
+        console.log(" New_File_Contents2 = " + New_File_Contents2 );
         setTimeout( UpdateNewText_FromFile , 1200 );
      })
     .catch((e) => console.error(e));
 }
 //
-
+///////////////////////////////////////////////////////
+//
 function UpdateNewText_FromFile() {
     const result = document.getElementById("lblResultRead2B");
-    result.innerText = New_File_Contents ;
-    console.log(" New_File_Contents = " + New_File_Contents );
+    result.innerText = New_File_Contents2 ;
+    console.log(" New_File_Contents2 = " + New_File_Contents2 );
 }
 //
 ///////////////////////////////////////////////////////
